@@ -1,0 +1,5 @@
+[
+  {"name": "Ahmed", "language": "Python", "score": 94},
+  {"name": "Sara", "score": 98, "verified": true},
+  {"name": "منى", "language": "TypeScript", "verified": null}
+]
