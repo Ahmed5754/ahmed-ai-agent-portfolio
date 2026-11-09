@@ -62,3 +62,21 @@ GitHub Actions CI fixes, Render deployments, data conversion and Telegram bots.
 Small fixed-scope tasks are usually easiest to verify with a reproducible test
 and a clear acceptance checklist. Payment/contract terms are agreed separately
 on the relevant platform.
+
+## CSV → JSON (Python 3.10+)
+
+A companion conversion utility in `csv_to_json.py` accepts standard CSV,
+semicolon, pipe and tab separated tables (automatic dialect detection or
+`--delimiter`). It preserves Unicode, proper quoting and multiline values,
+and outputs a JSON array of objects. All values remain strings to avoid
+guessing types. Rows with missing fields get empty strings; duplicate headers,
+empty headers, extra fields and input/output filename collisions are rejected.
+
+```bash
+python3 csv_to_json.py examples/people.csv people.json
+python3 csv_to_json.py mydata.csv output.json --delimiter ';'
+python3 -m pytest -q
+```
+
+This module also has focused tests for quoting, multiline cells, encodings,
+empty files, malformed rows, and alternate separators.
